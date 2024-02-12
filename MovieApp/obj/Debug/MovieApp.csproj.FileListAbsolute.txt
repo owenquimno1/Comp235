@@ -1,0 +1,2 @@
+C:\Users\owen\Documents\GitHub\Comp235\MovieApp\obj\Debug\MovieApp.csproj.AssemblyReference.cache
+C:\Users\owen\Documents\GitHub\Comp235\MovieApp\obj\Debug\MovieApp.csproj.CoreCompileInputs.cache
