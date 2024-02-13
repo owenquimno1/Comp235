@@ -44,10 +44,10 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Data\ConnectionHandler\Connections.cs" />
     <Compile Include="Data\MovieData.cs" />
+    <Compile Include="MovieUtils\Movie.cs" />
+    <Compile Include="MovieUtils\MovieUtilities\MovieUtililities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="MovieUtils\MovieUtilities\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

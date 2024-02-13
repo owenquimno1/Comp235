@@ -18,7 +18,8 @@ namespace MovieApp.Data
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandText = "SELECT ID, Title, Director FROM Movies";
-using (con)
+
+            using (con)
             {
                 con.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -35,4 +36,4 @@ using (con)
     }
 
 }
-}
+
