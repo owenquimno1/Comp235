@@ -1,0 +1,25 @@
+﻿@model COMP235MVCFinal.Models.Movies
+
+
+@{
+    ViewBag.Title = "AllMovies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AllMovies</h2>
+
+@using (Html.BeginForm("AllMovies", "Home", FormMethod.Post))
+{
+    var i = 0;
+    <table>
+        @for (i = 0; i < Model.Items.Count(); i++)
+        {
+            <tr>
+                <td>@Html.HiddenFor(m => m.Items[i].Id)</td>
+                <td>@Html.TextBoxFor(m => m.Items[i].Title)</td>
+                <td>@Html.TextBoxFor(m => m.Items[i].Director)</td>
+                <td>@Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id })</td>
+            </tr>
+        }
+    </table>
+}
