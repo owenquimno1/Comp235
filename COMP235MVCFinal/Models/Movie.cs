@@ -12,6 +12,8 @@ namespace COMP235MVCFinal.Models
         public string Director { get; set; }
         public string Description { get; set; }
 
+        public bool IsEditable { get; set; }
+
 
         public Movie() { }
         public Movie(int id, string title, string director)

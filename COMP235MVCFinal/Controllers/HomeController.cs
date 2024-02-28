@@ -52,10 +52,17 @@ namespace COMP235MVCFinal.Controllers
 
         }
 
-        public ActionResult AllMovies(Movies m)
+        public ActionResult AllMovies(Movies m, String Save)
         {
             ViewBag.Message = "All movies.";
             MovieDAO dAO = new MovieDAO();
+            if (Save == "Save")
+            {
+                Movie movie = m.Items[m.EditIndex];
+                dAO.updateMovie(movie);
+                movie.IsEditable = false;
+                m.EditIndex = -1;
+            }
             m = dAO.getAllMovies();
             return View(m);
         }
@@ -65,6 +72,16 @@ namespace COMP235MVCFinal.Controllers
             MovieDAO dAO = new MovieDAO();
             movie = dAO.getMovieById(movie.Id);
             return View("Movie", movie);
+        }
+
+        public ActionResult MoviesEdit(int? id, Movies movies)
+        {
+            int id2 = id ?? default(int);
+            MovieDAO dAO = new MovieDAO();
+            movies = dAO.getAllMovies();
+            movies.EditIndex = dAO.setMovieToEditMode(movies.Items, id2);
+            ViewBag.Message = "All movies.";
+            return View("AllMovies", movies);
         }
 
 

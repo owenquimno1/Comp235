@@ -67,6 +67,42 @@ namespace COMP235MVCFinal.DataAccessObjects
             return allMovies;
         }
 
+        public int setMovieToEditMode(List<Movie> movies, int id)
+        {
+            int editIndex = 0;
+            foreach (Movie m in movies)
+            {
+                if (m.Id == id)
+                {
+                    m.IsEditable = true;
+                    return editIndex;
+                }
+                editIndex++;
+            }
+            return -1;
+        }
+
+        public void updateMovie(Movie movie)
+        {
+            //This method accepts updates with, or without, a description
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            if (movie.Description != null)
+            {
+                cmd.CommandText = "UPDATE Movies SET Title=@Title,Director=@Director,Description=@Description WHERE Id=@Id";
+                cmd.Parameters.AddWithValue("@Description", movie.Description);
+            }
+            else
+            {
+                cmd.CommandText = "UPDATE Movies SET Title=@Title,Director=@Director WHERE Id=@Id";
+            }
+            cmd.Parameters.AddWithValue("@Title", movie.Title);
+            cmd.Parameters.AddWithValue("@Director", movie.Director);
+            cmd.Parameters.AddWithValue("@Id", movie.Id);
+            con.Open();
+            cmd.ExecuteNonQuery();
+        }
 
 
 
