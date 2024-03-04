@@ -21,6 +21,8 @@
                     <td>@Html.DisplayFor(m => m.Items[i].Director)</td>
                     <td>@Html.ActionLink("Details", "Details", new { Id = Model.Items[i].Id })</td>
                     <td>@Html.ActionLink("Edit", "MoviesEdit", new { id = Model.Items[i].Id })</td>
+                    <td>@Html.ActionLink("Delete", "DeleteMovie", "Home", new { id = Model.Items[i].Id }, new { onclick = "return confirm('Are you sure you want to delete this movie?');" })</td>
+                    
                 </tr>
             }
             else

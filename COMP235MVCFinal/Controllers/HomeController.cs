@@ -84,6 +84,30 @@ namespace COMP235MVCFinal.Controllers
             return View("AllMovies", movies);
         }
 
+        public ActionResult DeleteMovie(int id)
+        {
+            MovieDAO dAO = new MovieDAO();
+            dAO.deleteMovie(id); // Implement the deleteMovie method in your DAO
+            return RedirectToAction("AllMovies");
+        }
+
+        [HttpPost]
+        public ActionResult Update(Movie movie)
+        {
+            MovieDAO dao = new MovieDAO();
+            dao.updateMovie(movie);
+            return RedirectToAction("Details", new { id = movie.Id });
+        }
+
+        public ActionResult EditMovie(int id)
+        {
+            MovieDAO dao = new MovieDAO();
+            Movie movie = dao.getMovieById(id);
+
+            ViewBag.ShowEditForm = true;
+            return View("Movie", movie);
+        }
+
 
     }
 }

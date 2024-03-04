@@ -104,6 +104,17 @@ namespace COMP235MVCFinal.DataAccessObjects
             cmd.ExecuteNonQuery();
         }
 
+        public void deleteMovie(int id)
+        {
+            SqlConnection con = new SqlConnection(conString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "DELETE FROM Movies WHERE Id=@Id";
+            cmd.Parameters.AddWithValue("@Id", id);
+            con.Open();
+            cmd.ExecuteNonQuery();
+        }
+
 
 
     }
